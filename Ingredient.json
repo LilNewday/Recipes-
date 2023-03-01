@@ -1,0 +1,60 @@
+[
+    {
+      "name": "Egg",
+      "measure": "Large,Whole",
+      "amount": 1
+    },
+
+        {
+        "name": "Milk",
+        "measure": "Cup",
+        "amount": 1.25 
+        },
+
+      {
+        "name": "Flour",
+        "measure": "Cup",
+        "amount": 1.5
+      },
+      {
+        "name": "Sugar",
+        "measure": "Tablespoons",
+        "amount": 2
+      },
+
+      {
+        "name": "Flour",
+        "measure": "Cup",
+        "amount": 1.5
+      },
+
+      {
+        "name": "Flour",
+        "measure": "Cup",
+        "amount": 1.5
+      },
+
+      {
+        "name": "Flour",
+        "measure": "Cup",
+        "amount": 1.5
+      },
+
+      {
+        "name": "Flour",
+        "measure": "Cup",
+        "amount": 1.5
+      }
+
+]  
+
+
+
+
+
+
+
+
+
+
+
