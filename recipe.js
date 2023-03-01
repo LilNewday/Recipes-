@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
-const sequelize = new Sequelize("database", "username", "password", {
-  host: "localhost",
-  dialect: "mysql",
-});
+//const sequelize = new Sequelize("database", "username", "password", {
+  //host: "localhost",
+  //dialect: "mysql",
+//});
 
 const MealType = sequelize.define("meal_type", {
   name: {
@@ -38,12 +38,12 @@ const Ingredient = sequelize.define("ingredient", {
   },
 });
 
-const Allergen = sequelize.define("allergen", {
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-});
+//const Allergen = sequelize.define("allergen", {
+  //name: {
+    //type: Sequelize.STRING,
+    //allowNull: false,
+  //},
+//});
 
 // Define associations between models
 Recipe.belongsToMany(MealType, { through: "recipe_meal_type" });
@@ -52,12 +52,12 @@ MealType.belongsToMany(Recipe, { through: "recipe_meal_type" });
 Recipe.belongsToMany(Ingredient, { through: "recipe_ingredient" });
 Ingredient.belongsToMany(Recipe, { through: "recipe_ingredient" });
 
-Recipe.belongsToMany(Allergen, { through: "recipe_allergen" });
-Allergen.belongsToMany(Recipe, { through: "recipe_allergen" });
+//Recipe.belongsToMany(Allergen, { through: "recipe_allergen" });
+//Allergen.belongsToMany(Recipe, { through: "recipe_allergen" });
 
 
 await Recipe.sync();
 await Ingredient.sync();
-await Allergen.sync();
+//await Allergen.sync();
 await MealType.sync();
 
