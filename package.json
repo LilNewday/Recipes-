@@ -4,6 +4,7 @@
   "description": "2nd group project",
   "main": "script.js",
   "scripts": {
+    "start": "node loginserver.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
