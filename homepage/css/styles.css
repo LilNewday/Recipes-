@@ -547,6 +547,8 @@ progress {
   font-size: calc(1.425rem + 2.1vw);
   font-weight: 300;
   line-height: 1.2;
+  padding-bottom: 3%;
+  font-family: liberation sans-serif;
 }
 @media (min-width: 1200px) {
   .display-5 {
@@ -2746,6 +2748,7 @@ textarea.form-control-lg {
   flex-wrap: wrap;
   align-items: stretch;
   width: 100%;
+  padding-bottom: 1%;
 }
 .input-group > .form-control,
 .input-group > .form-select {
@@ -4066,6 +4069,7 @@ textarea.form-control-lg {
   font-size: 1.25rem;
   text-decoration: none;
   white-space: nowrap;
+  font-family: liberation sans-serif;
 }
 .navbar-nav {
   display: flex;
