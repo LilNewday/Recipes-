@@ -5,10 +5,16 @@
    // npm install express --save
    // node index.js-->
 //THIS IS LINKED TO HANDLEBARS JS- MAKING ALL THE PAGES SHOW UP IN LOCALHOST
-const express = require('express');
+
+const express = require("express");
 const path = require("path");
+//This initiates sequelize for the recipe routes.
+const sequelize = require("./config/connection.js" );
+
 const app = express();
+//May have a heroku conflict and can alternate with "const PORT = process.env.PORT || 3000;"
 const port = 3000;
+
 //Loads the handlebars module
 const handlebars = require('express-handlebars');
 //Sets our app to use the handlebars engine
@@ -19,7 +25,7 @@ app.engine('hbs', handlebars.engine({
 layoutsDir: __dirname + '/views/layouts',
 }));
 app.use(express.static('public'))
-app.get('/', (req, res) => {
+app.get('/', (req, res) => { 
 //Serves the body of the page aka "main.handlebars" to the container //aka "index.handlebars"
 res.render('main', {layout : 'index'});
 });
@@ -36,5 +42,26 @@ app.engine('hbs', handlebars.engine({
    res.render('main', {layout: 'index'});
     //res.render('login');
     });
+//Commented out since Recipe function will include this.
+//app.listen(port, () => console.log(`App listening to port ${port}`));
 
-app.listen(port, () => console.log(`App listening to port ${port}`));
+
+//Create recipe perameters
+app.get('/recipes/new', async (req, res) => {
+    const ingredients = await Ingredient.findAll();
+    res.render('new_recipe', { ingredients });
+  });
+  
+  app.post('/recipes', async (req, res) => {
+    const { name, preparation, ingredients } = req.body;
+    const recipe = await Recipe.create({ name, preparation });
+    await recipe.addIngredients(ingredients);
+    res.redirect('/recipes');
+  });
+
+
+sequelize.sync({ force: false }).then(() => {
+  app.listen(port, () => console.log(`Now listening on Port ${port}`));
+});
+
+
