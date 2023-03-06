@@ -1,4 +1,3 @@
-<!--THIS IS THE LOG IN PAGE-->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,61 +5,62 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+        <base href="/">
         <title>Recipe App</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="public/css/styles.css" rel="stylesheet" />
+        <link href="/css/style.css" rel="stylesheet" />
     </head>
-    <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-lg-5">
+              
                 <a class="navbar-brand" href="#!">The Recipe App</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
                         <li class="nav-item"><a class="nav-link active" href="#!">About</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="#!">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#!">login</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-       
-        <div class="login">
-          <h1>Login</h1>
-          <form action="/auth" method="post">
-            <label for="username">
-              <!-- font awesome icon -->
-              <i class="fas fa-user"></i>
-            </label>
-            <input type="text" name="username" placeholder="Chef's Login" id="username" required>
-            <label for="password">
-              <i class="fa-light fa-book"></i>
-            </label>
-            <input type="password" name="password" placeholder="Password" id="password" required>
-            <input type="submit" value="Login">
-          </form>
-        </div>
-        <!-- <div class="card-body">
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-        </div> -->
-
-
-    <!-- content of the page goes here -->
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <!-- <script src="./script.js"></script> -->
-      <!-- Footer-->
+<body>
+  
      
+      <nav>
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+        <a href="/profile">profile</a> |
+        <button class="no-button" id="logout">logout</button>
+        {{else}}
+        <a href="/login"></a>
+        {{/if}}
+      </nav>
+    </header>
+    <main class="container container-fluid mt-5">
+      <!-- Render the sub layout -->
+      {{{ body }}}
+    </main>
+  
+       <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Team Two 2023</p></div>
+        </footer> 
+   
+  </div>
+
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+ 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-    </body>
+</body>
+
 </html>
-
-
