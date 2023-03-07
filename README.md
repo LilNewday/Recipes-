@@ -1,38 +1,33 @@
 # Recipes-
-## ‘Recipes!’ The app for all your recipes!! Ever need to make a meal with ingredients in your kitchen and don’t know what to make? *BOOM!* ‘Recipes!’ the app just for YOU!
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+## Description 
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
-
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
+‘Recipes!’ The app for all your recipes!! Ever need to make a meal with ingredients in your kitchen and don’t know what to make? *BOOM!* ‘Recipes!’ the app just for YOU!
+- We wanted to come up with something that could help everyone. It just so happened to be helping everyone in the kitchen.
+- We built this project because we figured it would be nice to do our take on the Recipe finder based on the ingredients in your house idea.
+- The app solves the issue of finding out what recipes you can make in your house strictly off of what you currently already have in your house.
+- We learned that database management and integration of relational databases were extremely challenging. We learned how to better manage foreign and primary keys linked between joined databases. We also learned how to properly interchange variables as well as image associations and presentation with recipes. We also learned how to better coordinate with github.
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+N/A
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+The first thing you'll want to do is log in or sign up if you don't have an account. After that you'll be taking to the Homepage where you'll be able to search up a recipe that you may have heard of that is in our database or you can scroll down and see some of the recipes that we do have up currently on our page with a beautiful description of the recipe. The concept then is that you'll be able to log in and submit your own recipe as well which would contribute to the health of the website as users could see what others around the world have to offer.  
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
-
-![alt text](assets/images/screenshot.png)
+# Sign In Page
+![Recipe! Login](https://user-images.githubusercontent.com/115208733/223541563-7b3fee95-90c5-4a4f-82d8-e41a3b6300b6.png)
+# Recipe Search
+![Find a Recipe! screenshot](https://user-images.githubusercontent.com/115208733/223541675-1c79a58c-e405-452c-b009-d3da8f92c926.png)
+# Recipe List
+![Recipe Concept](https://user-images.githubusercontent.com/115208733/223541692-6a8cee83-6528-48fd-b428-7b20fcbbf547.png)
 
 ## Credits
 
 - Andrew Littlejohn - https://github.com/AndrewmLittlejohn
 - Gregory Gwaltney - https://github.com/gwaltneyga-TyMQFc
 - Jazmin Traci Johnson - https://github.com/tracij1286
+- Justin Perry - https://github.com/LilNewday
 
 ## License
 
@@ -59,18 +54,3 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ---
-
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
-
-## Features
-
-If your project has a lot of features, list them here.
-
-## How to Contribute
-
-If you created an application or package and would like other developers to contribute to it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-
-## Tests
-
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
