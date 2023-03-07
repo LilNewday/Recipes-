@@ -1,90 +1,90 @@
 
-module.exports = function(pw, rules) {
-  var issues = [];
-  rules = rules || {};
-  def(rules, 'minimumLength', 8);
-  def(rules, 'maximumLength', 256);
-  def(rules, 'requireCapital', true);
-  def(rules, 'requireLower', true);
-  def(rules, 'requireNumber', true);
-  def(rules, 'requireSpecial', true);
+// module.exports = function(pw, rules) {
+//   var issues = [];
+//   rules = rules || {};
+//   def(rules, 'minimumLength', 8);
+//   def(rules, 'maximumLength', 256);
+//   def(rules, 'requireCapital', true);
+//   def(rules, 'requireLower', true);
+//   def(rules, 'requireNumber', true);
+//   def(rules, 'requireSpecial', true);
 
-  if (pw.length < rules.minimumLength) {
-      issues.push({
-          reason: 'minimumLength',
-          message: 'Password must be between more than 8 characters and include a lower case letter, upper case letter, and a number',
-          part: 'be at least ' + rules.minimumLength + ' letters long'
-      });
-  }
-  if (pw.length > rules.maximumLength) {
-      issues.push({
-          reason: 'maximumLength',
-          message: 'Password must be between more than 8 characters and include a lower case letter, upper case letter, and a number',
-          part: 'be less than ' + rules.maximumLength + ' letters long'
-      });
-  }
-  if (rules.requireCapital && !pw.match(/[A-Z]/g)) {
-      issues.push({
-          reason: 'requireCapital',
-          message: 'Password must be between more than 8 characters and include a lower case letter, upper case letter, and a number',
-          part: 'contain a capital letter'
-      });
-  }
-  if (rules.requireLower && !pw.match(/[a-z]/g)) {
-      issues.push({
-          reason: 'requireLower',
-          message: 'Password must be between more than 8 characters and include a lower case letter, upper case letter, and a number',
-          part: 'contain a lowercase letter'
-      });
-  }
-  if (rules.requireNumber && !pw.match(/\d/g)) {
-      issues.push({
-          reason: 'requireNumber',
-          message: 'Password must be between more than 8 characters and include a lower case letter, upper case letter, and a number',
-          part: 'contain a number'
-      });
-  }
-  if (rules.requireSpecial && !pw.match(/\W+/g)) {
-      issues.push({
-          reason: 'requireSpecial',
-          message: 'Password must be between more than 8 characters and include a lower case letter, upper case letter, and a number',
-          part: 'contain a special character'
-      });
-  }
+//   if (pw.length < rules.minimumLength) {
+//       issues.push({
+//           reason: 'minimumLength',
+//           message: 'Password must be between more than 8 characters and include a lower case letter, upper case letter, and a number',
+//           part: 'be at least ' + rules.minimumLength + ' letters long'
+//       });
+//   }
+//   if (pw.length > rules.maximumLength) {
+//       issues.push({
+//           reason: 'maximumLength',
+//           message: 'Password must be between more than 8 characters and include a lower case letter, upper case letter, and a number',
+//           part: 'be less than ' + rules.maximumLength + ' letters long'
+//       });
+//   }
+//   if (rules.requireCapital && !pw.match(/[A-Z]/g)) {
+//       issues.push({
+//           reason: 'requireCapital',
+//           message: 'Password must be between more than 8 characters and include a lower case letter, upper case letter, and a number',
+//           part: 'contain a capital letter'
+//       });
+//   }
+//   if (rules.requireLower && !pw.match(/[a-z]/g)) {
+//       issues.push({
+//           reason: 'requireLower',
+//           message: 'Password must be between more than 8 characters and include a lower case letter, upper case letter, and a number',
+//           part: 'contain a lowercase letter'
+//       });
+//   }
+//   if (rules.requireNumber && !pw.match(/\d/g)) {
+//       issues.push({
+//           reason: 'requireNumber',
+//           message: 'Password must be between more than 8 characters and include a lower case letter, upper case letter, and a number',
+//           part: 'contain a number'
+//       });
+//   }
+//   if (rules.requireSpecial && !pw.match(/\W+/g)) {
+//       issues.push({
+//           reason: 'requireSpecial',
+//           message: 'Password must be between more than 8 characters and include a lower case letter, upper case letter, and a number',
+//           part: 'contain a special character'
+//       });
+//   }
 
-  return issues.length ? {
-      sentence: sentence(issues),
-      issues: issues
-  }: false;
+//   return issues.length ? {
+//       sentence: sentence(issues),
+//       issues: issues
+//   }: false;
 
 
-  // I don't think we will need this function
-  function sentence(reasons) {
-      var start = 'Password must ';
-      if (reasons.length === 1) {
-          return start + reasons[0].part + '.';
-      }
-      if (reasons.length === 2) {
-          return start + reasons[0].part + ' and ' + reasons[1].part + '.';
-      }
-      if (reasons.length > 2) {
-          var last = reasons[reasons.length - 1].part;
-          return start + reasons.slice(0, -1).map(function(r) {
-              return r.part;
-          }).join(', ') + ', and ' + last + '.';
-      }
-  }
-};
+//   // I don't think we will need this function
+//   function sentence(reasons) {
+//       var start = 'Password must ';
+//       if (reasons.length === 1) {
+//           return start + reasons[0].part + '.';
+//       }
+//       if (reasons.length === 2) {
+//           return start + reasons[0].part + ' and ' + reasons[1].part + '.';
+//       }
+//       if (reasons.length > 2) {
+//           var last = reasons[reasons.length - 1].part;
+//           return start + reasons.slice(0, -1).map(function(r) {
+//               return r.part;
+//           }).join(', ') + ', and ' + last + '.';
+//       }
+//   }
+// };
 
-function def(o, option, val) {
-  if (o[option] === undefined) o[option] = val;
-}
+// function def(o, option, val) {
+//   if (o[option] === undefined) o[option] = val;
+// }
 
 const mysql = require('mysql2');
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
-
+const bcrypt = require('bcrypt');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -133,6 +133,11 @@ app.get('/', function(request, response) {
 	response.sendFile(path.join(__dirname + '/index.html'));
 });
 
+app.get('/signUpPage', function(request, response) { 
+    response.sendFile(path.join(__dirname, '/signup.html'));
+
+});
+
 // http://localhost:3001/auth
 app.post('/auth', function(request, response) {
 
@@ -163,6 +168,36 @@ app.post('/auth', function(request, response) {
 		response.end();
 	}
 });
+
+// http://localhost:3001/signUp
+app.post('/signUp', function (request,response) {
+
+    let username = request.body.username;
+    let password = request.body.password;
+    let email = request.body.email;
+  
+    if (username && password && email) {
+        bcrypt.hash(password, 10, function (err, hash) {
+          if (err) {
+            console.error(err);
+            response.status(500).send('Error creating account');
+            return;
+          }
+
+      db.query(`INSERT INTO \`accounts\` (username, password, email) VALUES ('${username}', '${password}', '${email}');`),
+        function (err, result){
+            if(err){
+                console.error(err);
+                response.status(500).send('Please Try Again');
+            return;
+            }
+            response.send ('Welcome to the app');
+        }
+    });
+    }   else { 
+        response.status(400).send('Please enter an email, username and password');
+    }
+}); 
 
 // http://localhost:3001/home
 app.get('/home', function(request, response) {
