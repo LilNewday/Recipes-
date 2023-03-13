@@ -1,17 +1,21 @@
 {
-  "name": "login",
+  "name": "project-2-",
   "version": "1.0.0",
-  "description": "",
-  "main": "login.js",
+  "description": "2nd group project",
+  "main": "script.js",
   "scripts": {
-    "start": "node login.js",
+    "start": "node loginserver.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.18.2",
+    "express-handlebars": "^3.0.0",
     "express-session": "^1.17.3",
-    "mysql2": "^3.1.2"
+    "mysql2": "^3.1.2",
+    "password-validator": "^5.3.0",
+    "sequelize": "^6.3.5"
   }
 }
