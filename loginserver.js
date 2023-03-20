@@ -42,8 +42,8 @@ const db = mysql.createConnection(
     // MySQL username,
     user: 'root',
     // MySQL password
-    password: 'Bootcampsql1!',
-    database: 'nodelogin',
+    password: 'Iwannabeacomedianlikeyou5!',
+    database: 'userinfo_db',
     waitForConnections: true,
     connectionLimit: 10,
     maxIdle: 10, 
@@ -70,7 +70,7 @@ app.post('/auth', function(request, response) {
 	
 	if (username && password) {
    
-		db.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
+		db.query('SELECT * FROM loginInfo WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
 			
 			if (error) throw error;
 	
