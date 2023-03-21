@@ -36,23 +36,7 @@ app.use(express.static(path.join(__dirname)));
 app.use(require('./controllers/recipe-routes'));
 
 // Connect to database
-const db = mysql.createConnection(
-  {
-    host: 'localhost',
-    // MySQL username,
-    user: 'root',
-    // MySQL password
-    password: 'Iwannabeacomedianlikeyou5!',
-    database: 'userinfo_db',
-    waitForConnections: true,
-    connectionLimit: 10,
-    maxIdle: 10, 
-    idleTimeout: 10000, 
-    queueLimit: 0,
-    multipleStatements: true
-  },
-  console.log(`Connected to the nodelogin database.`)
-);
+const db = require('./config/connection');
 
 // http://localhost:3001/
 app.get('/', function(request, response) {

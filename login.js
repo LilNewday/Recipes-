@@ -11,23 +11,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Connect to database
-const db = mysql.createConnection(
-  {
-    host: 'localhost',
-    // MySQL username,
-    user: 'root',
-    // MySQL password
-    password: 'Bootcampsql1!',
-    database: 'nodelogin',
-    waitForConnections: true,
-    connectionLimit: 10,
-    maxIdle: 10, 
-    idleTimeout: 10000, 
-    queueLimit: 0,
-    multipleStatements: true
-  },
-  console.log(`Connected to the userinfo_db database.`)
-);
+const db = require('./config/connection');
 
 app.use(session({
 	secret: 'secret',
